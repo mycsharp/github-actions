@@ -12,6 +12,9 @@ on:
           type: string
           default: 'Release'
           description: 'The build configuration. Eg debug/release'
+      secrets:
+        NUGET_API_KEY:
+          required: true
 
 env:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
