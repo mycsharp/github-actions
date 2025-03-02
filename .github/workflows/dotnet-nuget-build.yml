@@ -82,8 +82,7 @@ jobs:
           uses: actions/download-artifact@v4
 
         - name: Upload release asset
-          run: gh release upload ${{ github.event.release.tag_name }}
-                ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg
+          run: gh release upload ${{ github.event.release.tag_name }} ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -95,7 +94,4 @@ jobs:
 
         - name: Publish package
           if: always()
-          run: dotnet nuget push ${{github.workspace}}/artifacts/nuget-packages/*.nupkg
-                --source https://api.nuget.org/v3/index.json
-                --api-key ${{ secrets.NUGET_API_KEY }}
-                --skip-duplicate
+          run: dotnet nuget push ${{github.workspace}}/artifacts/nuget-packages/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
