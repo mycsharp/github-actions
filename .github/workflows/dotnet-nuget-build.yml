@@ -13,6 +13,9 @@ on:
           default: 'Release'
           description: 'The build configuration. Eg debug/release'
 
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+
 jobs:
     build:
       runs-on: ubuntu-latest
