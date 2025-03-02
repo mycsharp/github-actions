@@ -88,11 +88,13 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
         - name: Setup .NET SDK
+          if: always()
           uses: actions/setup-dotnet@v4
           with:
             global-json-file: ./global.json
 
         - name: Publish package
+          if: always()
           run: dotnet nuget push ${{github.workspace}}/artifacts/nuget-packages/*.nupkg
                 --source https://api.nuget.org/v3/index.json
                 --api-key ${{ secrets.NUGET_API_KEY }}
