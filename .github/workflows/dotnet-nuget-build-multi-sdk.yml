@@ -34,7 +34,7 @@ jobs:
       - name: Setup Multiple .NET SDKs
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ inputs.dotnet-versions }}
+          dotnet-version: ${{ inputs.dotnet-sdks }}
 
       - name: Restore dependencies
         run: dotnet restore
