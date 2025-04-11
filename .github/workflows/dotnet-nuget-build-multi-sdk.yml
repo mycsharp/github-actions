@@ -87,7 +87,7 @@ jobs:
           uses: actions/download-artifact@v4
 
         - name: Upload release asset
-          run: gh release upload ${{ github.event.release.tag_name }} ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg --clobber
+          run: gh release upload ${{ github.event.release.tag_name }} ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
