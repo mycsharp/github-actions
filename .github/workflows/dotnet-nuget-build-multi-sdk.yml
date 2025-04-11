@@ -95,7 +95,7 @@ jobs:
           if: always()
           uses: actions/setup-dotnet@v4
           with:
-            dotnet-version: ${{ fromJSON(inputs.dotnet-sdks) }}
+            dotnet-version: ${{ inputs.dotnet-sdks }}
 
         - name: Publish package
           if: always()
