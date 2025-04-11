@@ -70,7 +70,6 @@ jobs:
         with:
           name: artifacts
           path: ./artifacts/**/*
-          overwrite: true
 
     # the deploy job runs only when the build job is successful and the event is a release
     deploy:
@@ -88,7 +87,7 @@ jobs:
           uses: actions/download-artifact@v4
 
         - name: Upload release asset
-          run: gh release upload ${{ github.event.release.tag_name }} ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg
+          run: gh release upload ${{ github.event.release.tag_name }} ${{ github.workspace }}/artifacts/nuget-packages/*.*nupkg --clobber
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
