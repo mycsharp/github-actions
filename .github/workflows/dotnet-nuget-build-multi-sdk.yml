@@ -10,10 +10,10 @@ on:
           type: string
           default: 'Release'
           description: 'The build configuration. Eg debug/release'
-        dotnet_sdks:
+        dotnet-sdks:
           required: true
           type: string
-          description: 'JSON array of .NET SDK versions to set up, e.g. ["6.0", "7.0", "8.0"]'
+          description: 'JSON array of .NET SDK versions to set up.'
       secrets:
         NUGET_API_KEY:
           required: true
@@ -34,7 +34,7 @@ jobs:
       - name: Setup Multiple .NET SDKs
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: ${{ fromJSON(inputs.dotnet_sdks) }}
+          dotnet-version: ${{ inputs.dotnet-versions }}
 
       - name: Restore dependencies
         run: dotnet restore
